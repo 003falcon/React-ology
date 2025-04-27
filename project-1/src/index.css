@@ -103,15 +103,15 @@ button:focus-visible {
   position: fixed;
   background-color: black;
   } */
-  
-  * {
-    box-sizing: 0;
-  }
-  body {
-    margin: 0;
-    font-family: Inter, sans-serif;
-    background-color: #282D35;
-    color: white;
+
+* {
+  box-sizing: 0;
+}
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background-color: #282d35;
+  color: white;
 }
 header {
   background-color: black;
@@ -133,27 +133,27 @@ nav > span {
   font-size: 3.6rem;
   color: aqua;
 }
-main{
-padding: 60px 30px;
-background-image: url(./assets/react-logo-half.png);
-background-repeat: no-repeat;
-background-position: right 70%;
-background-size: 400px;
+main {
+  padding: 60px 30px;
+  background-image: url(./assets/react-logo-half.png);
+  background-repeat: no-repeat;
+  background-position: right 70%;
+  background-size: 400px;
 }
-main>h1{
+main > h1 {
   font-size: 2.3rem;
   text-decoration: underline;
 }
 
-.unordered-list{
+.unordered-list {
   font-size: 2rem;
   margin: 60px 20px;
   /* max-width: 800px; */
 }
-.unordered-list>li{
+.unordered-list > li {
   padding: 30px 0px;
 }
-.unordered-list>li::marker{
+.unordered-list > li::marker {
   color: aqua;
   font-size: 2rem;
 }

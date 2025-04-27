@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import Practice from "./Practice";
+import App from "./App";
 const root = createRoot(document.getElementById("root"));
 
-root.render(<Practice />);
+root.render(<App />);
