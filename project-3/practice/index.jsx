@@ -93,15 +93,19 @@ function App(){
       {/*or use a htmlFor attribute whose value is the id of the associated input */}
       <label htmlFor="email">  Email:</label>
       {/* name property to get data from form */}
-      <input id="email" type="email" name="email"/>
+      <input id="email" type="email" name="email" defaultValue={"noone@yourmail.com"}/>
       <br/>
       <label htmlFor="password">Password: </label>
 
-      <input type="password" id="password" name="password"/>
+      <input type="password" id="password" name="password" defaultValue={"sameasemail"}/>
       <br/>
+      <label htmlFor="description" >Description:</label>
+      <textarea id="description" name="description"></textarea>
       {/* <input type="submit" value={"submit"}/> */}
       {/* is equivalent to */}
       <button>submit</button>
+
+      
       </form>
 
     </section>
