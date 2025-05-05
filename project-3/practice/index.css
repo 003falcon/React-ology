@@ -28,6 +28,7 @@ label{
 }
 fieldset{
   margin-bottom: 30px;
+  
 }
 fieldset>label{
   display: flex;
@@ -48,4 +49,11 @@ button{
   border-radius: 5px;
   padding: 5px 15px;
 
+}
+#favColor{
+  display: block;
+  margin-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  padding: 5px 10px;
 }
