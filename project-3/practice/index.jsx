@@ -71,7 +71,10 @@ function App(){
     console.log(email);
     const password=formData.get('password');
     console.log(password);
-  
+    //in case of radios it  gets the data from value attribute
+    const employmentStatus=formData.get('employment')
+    console.log(employmentStatus);
+
     //automatically resets form,no need for below
     // formEl.reset();
 
@@ -100,7 +103,23 @@ function App(){
       <input type="password" id="password" name="password" defaultValue={"sameasemail"}/>
       <br/>
       <label htmlFor="description" >Description:</label>
-      <textarea id="description" name="description"></textarea>
+      <textarea id="description" name="description" defaultValue={"This is a description"}></textarea>
+
+      <fieldset>
+        <legend>Employment status</legend>
+        <label>
+          <input type="radio" name="employment"  value="Employed"/>
+           Employed
+        </label>
+        <label>
+          <input type="radio" name="employment" value="Part-time"/>
+          Part-time
+        </label>
+        <label>
+          <input type="radio" name="employment" defaultChecked={true} value="Unemployed"/>
+          Unemployed
+        </label>
+      </fieldset>
       {/* <input type="submit" value={"submit"}/> */}
       {/* is equivalent to */}
       <button>submit</button>

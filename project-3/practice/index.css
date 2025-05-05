@@ -1,0 +1,51 @@
+body{
+  background-color: yellow;
+}
+h1{
+  text-align: center;
+  font-size: 3rem;
+}
+#email,#password,#description{
+  margin-left: 70px;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  font-size: 24px;
+
+
+}
+#password{
+  margin-left: 17px;
+}
+#description{
+  margin-left: 10px;
+}
+label{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  vertical-align:top;
+}
+fieldset{
+  margin-bottom: 30px;
+}
+fieldset>label{
+  display: flex;
+  margin: 10px;
+  
+}
+fieldset> label >input{
+  margin-right: 15px;
+}
+legend{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+}
+button{
+  font-size: 24px;
+  background-color: rgba(50, 50, 64, 0.738);
+  color:white;
+  border-radius: 5px;
+  padding: 5px 15px;
+
+}
