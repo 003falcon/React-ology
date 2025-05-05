@@ -51,18 +51,18 @@ import ReactDOM from "react-dom/client";
 //   console.log("Submitted!");
 function App(){
 
-  function handleSubmit(event)
-  {
-    event.preventDefault();
-    const formEl=event.currentTarget;
-    const formData=new FormData(formEl);
+  // function handleSubmit(event)
+  // {
+    // event.preventDefault();
+    // const formEl=event.currentTarget;
+    // const formData=new FormData(formEl);
     //use the name attribute
-    const email=formData.get('email');
+    // const email=formData.get('email');
 
-    console.log(email);
+    // console.log(email);
     //resets form
-    formEl.reset();
-  }
+    // formEl.reset();
+  // }
   
   function signUp(formData){
     
