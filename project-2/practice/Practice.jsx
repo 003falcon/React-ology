@@ -1,20 +1,33 @@
+import React from 'react';
 import Contact from "./Contact";
 import jokesData from "./jokesData.js";
 import Joke from './Joke.jsx'
 
-export default function Practice()
+export default function App()
 {
-  console.log(jokesData)
-  const jokesArr=jokesData.map((joke)=>{
-    return <Joke setup={joke.Setup} punchline={joke.punchline}/>
+  const [msgs,setMsgs] = React.useState(['a']);
 
-  })
   return (
-    <main>
-    {jokesArr}
-    </main>
+    <>
+    <h1>
+      {msgs.length >1? "You have " +msgs.length+" unread messages" : msgs.length==1?"You have 1 unread message":"You are all caught up!"}
+    </h1>
+    </>
   )
-}
+} 
+// export default function Practice()
+// {
+//   console.log(jokesData)
+//   const jokesArr=jokesData.map((joke)=>{
+//     return <Joke setup={joke.Setup} punchline={joke.punchline}/>
+
+//   })
+//   return (
+//     <main>
+//     {jokesArr}
+//     </main>
+//   )
+// }
 
 // export default function Practice()            
 // {
