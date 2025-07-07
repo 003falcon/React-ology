@@ -1,3 +1,5 @@
+{/*This function renders the main content of the page,
+  here,the points regarding React */}
 export default function Main() {
   return (
     <main>

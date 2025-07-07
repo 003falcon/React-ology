@@ -17,7 +17,7 @@ import ReactDOM from "react-dom/client";
 //   <main className="container">
 //     <img onMouseOver={handleHoverOverImage} src="./image.png" alt="image from" />
 //     <button onClick={handleClick}>click me</button>
-{
+// {
   /* <div
       onMouseEnter={e => console.log('onMouseEnter (parent)')}
       onMouseLeave={e => console.log('onMouseLeave (parent)')}
@@ -33,7 +33,7 @@ import ReactDOM from "react-dom/client";
         First button
       </button>
       </div> */
-}
+// }
 // </main>
 // );
 // }
@@ -64,7 +64,7 @@ function App() {
   // }
 
   function signUp(formData) {
-    //use the name attribute
+    //use the name attribute to get value
     const email = formData.get("email");
     console.log(email);
     const password = formData.get("password");
@@ -77,6 +77,11 @@ function App() {
     console.log(dietaryPreferences);
     const favouriteColor= formData.get("favColor");
     console.log(favouriteColor);
+
+    //In case of many input fields in a form (say 10+),its cumbersome to get each value and store individually
+    //Hence we store the object that stores all entries
+    const formObj=Object.fromEntries(formData);
+    console.log(formObj)
 
     //automatically resets form,no need for below
     // formEl.reset();

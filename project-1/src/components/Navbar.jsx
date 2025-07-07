@@ -1,3 +1,4 @@
+{/*This function renders the navbar of the page which includes the logo and the title */}
 export default function Navbar() {
   return (
     <header>
