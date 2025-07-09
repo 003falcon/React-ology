@@ -29,7 +29,7 @@ export default function App()
 //   )
 // }
 
-// export default function Practice()            
+// export default function Practice2()            
 // {
 //   return (
 //     <div className="contacts">
