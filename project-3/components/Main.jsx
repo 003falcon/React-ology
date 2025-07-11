@@ -2,14 +2,40 @@ import React from "react";
 import IngredientsList from "./IngredientsList";
 import ClaudeRecipe from "./ClaudeRecipe";
 import { getRecipeFromMistral } from "../hf";
-export default function Main() {
+
+const placeholderOptions = [
   // const ingredients = ["chicken", "mutton", "onion"];
-  let [currentIngredients, setCurrentIngredients] = React.useState([]);
-  const ingredientsItems = currentIngredients.map((ingredient) => (
-    <li key={ingredient}>{ingredient}</li>
+  "e.g. chili powder",
+  "e.g. garlic cloves",
+  "e.g. leftover rice",
+  "e.g. canned beans",
+  "e.g. spinach leaves",
+  "e.g. parmesan cheese",
+];
+export default function Main() {
+  const [placeholder, setPlaceholder] = React.useState(placeholderOptions[0]);
+  const [optionIndex, setOptionIndex] = React.useState(0);
+  const [charIndex, setCharIndex] = React.useState(0);
+
+  const [currentIngredients, setCurrentIngredients] = React.useState([]);
+
+  const ingredientsItems = currentIngredients.map((ingredient, index) => (
+    <li key={index}>
+      {ingredient}
+      <button
+        className="remove-btn"
+        onClick={() => removeIngredient(ingredient)}
+      >
+        ❌
+      </button>
+    </li>
   ));
-  // let [recipeShown, setRecipeShown] = React.useState(false);
-  let [recipe, setRecipe] = React.useState(false);
+
+  const [recipeShown, setRecipeShown] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [recipe, setRecipe] = React.useState("");
+  const [cuisine, setCuisine] = React.useState("Indian");
+
   // function handleSubmit(event) {
   //   event.preventDefault();
   //   const formData = new FormData(event.currentTarget);
@@ -32,6 +58,26 @@ export default function Main() {
   //to be saved or displayed
   // }
 
+  React.useEffect(() => {
+    const currentOption = placeholderOptions[optionIndex];
+
+    if (charIndex <= currentOption.length) {
+      const timeout = setTimeout(() => {
+        setPlaceholder(currentOption.slice(0, charIndex));
+        setCharIndex((prev) => prev + 1);
+      }, 100); // typing speed
+
+      return () => clearTimeout(timeout);
+    } else {
+      const delay = setTimeout(() => {
+        setCharIndex(0);
+        setOptionIndex((prev) => (prev + 1) % placeholderOptions.length);
+      }, 2000); // wait 2s before switching to next option
+
+      return () => clearTimeout(delay);
+    }
+  }, [charIndex, optionIndex]);
+
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient");
     console.log(newIngredient);
@@ -43,10 +89,29 @@ export default function Main() {
     } else alert("Enter ingredient :)");
   }
 
-  function getRecipe() {
+  function removeIngredient(ingredientToRemove) {
+    setCurrentIngredients((prevIngredients) =>
+      prevIngredients.filter((ing) => ing !== ingredientToRemove)
+    );
+  }
+
+  async function getRecipe() {
     // setRecipeShown(prevRecipeShown=>!prevRecipeShown);
-    const recipeMarkdown = getRecipeFromMistral(currentIngredients);
-    setRecipe(recipeMarkdown);
+    try {
+      setIsLoading(true);
+      const recipeMarkdown = await getRecipeFromMistral(
+        currentIngredients,
+        cuisine
+      );
+      setRecipeShown(true);
+      setRecipe(recipeMarkdown);
+    } catch (err) {
+      console.log("failed to fetch response", err);
+    } finally {
+      setIsLoading(false);
+    }
+    // getRecipeFromMistral(currentIngredients);
+    // console.log(recipeMarkdown);
   }
   return (
     <main>
@@ -61,11 +126,27 @@ export default function Main() {
       >
         <input
           type="text"
-          placeholder="e.g. chili powder"
+          // placeholder="e.g. chili powder"
+          placeholder={placeholder}
           aria-label="Add ingredient"
           name="ingredient"
         />
         <button>Add ingredient</button>
+        <select
+          value={cuisine}
+          onChange={(e) => setCuisine(e.target.value)}
+          name="cuisine"
+          style={{ marginLeft: "10px", padding: "4px" }}
+        >
+          <option value="Indian">Indian</option>
+          <option value="Italian">Italian</option>
+          <option value="English">English</option>
+          <option value="Chinese">Chinese</option>
+          <option value="Mexican">Mexican</option>
+          <option value="French">French</option>
+          <option value="Japanese">Japanese</option>
+          <option value="Thai">Thai</option>
+        </select>
       </form>
       {/* <ul>{ingredientsItems}</ul> */}
       {currentIngredients.length ? (
@@ -75,7 +156,16 @@ export default function Main() {
           toggle={getRecipe}
         />
       ) : null}
-      {recipe && <ClaudeRecipe recipe={recipe} />}
+      {isLoading && (
+        <div className="bouncing-dots">
+          <div>Loading</div>
+          <span>.</span>
+          <span>.</span>
+          <span>.</span>
+        </div>
+      )}
+      {/* {isLoading && <div className="spinner">Loading recipe...</div>} */}
+      {!isLoading && recipeShown && <ClaudeRecipe recipe={recipe} />}
     </main>
   );
 }

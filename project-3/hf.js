@@ -2,10 +2,10 @@ import { InferenceClient } from "@huggingface/inference";
 
 //Note env file must be kept at root of current project directory
 const client = new InferenceClient(import.meta.env.VITE_HF_ACCESS_TOKEN);
-const cuisine="Indian";
-const SYSTEM_PROMPT = `You are an assistant that receives a list of ingredients that a user has and suggests a recipe of ${cuisine} cuisine they could make with some or all of those ingredients.You don't need to use every ingredient they mention in their recipe. The recipe can include additional ingredients they didn't mention,but try not to include too many extra ingredients.The recipe must be of the mentioned cuisine.Format your response in markdown to make it easier to render to a webpage`;
+// const cuisine="Indian";
 
-export async function getRecipeFromMistral(ingredientsArr) {
+export async function getRecipeFromMistral(ingredientsArr,cuisine) {
+  const SYSTEM_PROMPT = `You are an assistant that receives a list of ingredients that a user has and suggests a recipe of ${cuisine} cuisine they could make with some or all of those ingredients.You don't need to use every ingredient they mention in their recipe. The recipe can include additional ingredients they didn't mention,but try not to include too many extra ingredients.The recipe must be of the mentioned cuisine.Format your response in markdown to make it easier to render to a webpage`;
   const ingredientsString = ingredientsArr.join(",");
   try {
     const response = await client.chatCompletion({
