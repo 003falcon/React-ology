@@ -1,5 +1,12 @@
+import {useState} from 'react'
+
 export default function Main()
 {
+  const [meme,setMeme]=useState({
+    imgUrl:"http://i.imgflip.com/1bij.jpg",
+    topText:"One does not simply",
+    bottomText:"walk into Old City",
+  })
   return (
     <main>
       <div className="form">
@@ -15,9 +22,9 @@ export default function Main()
       </>
       </div>
       <div className="meme">
-        <img src="http://i.imgflip.com/1bij.jpg"/>
-        <span className="top">1</span>
-        <span className="bottom">2</span>
+        <img src={meme.imgUrl}/>
+        <span className="top">{meme.topText}</span>
+        <span className="bottom">{meme.bottomText}</span>
       </div>
     </main>
   )
