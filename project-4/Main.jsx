@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+//In functional programming ,state is immutable,only mutable when using respective setter function
 export default function Main() {
   const [meme, setMeme] = useState({
     imgUrl: "http://i.imgflip.com/1bij.jpg",
