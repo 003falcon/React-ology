@@ -16,9 +16,9 @@ export default function App(props)
   //useEffect() function runs after component is rendered
   
   //dependency array contains fields whose values if changed between consecutive renders , it allows the component to re-render.
-  React.useEffect(function()
+  React.useEffect(()=>
   {
-    console.log('in effect()');
+    // console.log('in effect()');
     fetch('https://api.restful-api.dev/objects')
     .then(res=> res.json())
     .then(data => setStarWarsData(data));
@@ -34,3 +34,4 @@ export default function App(props)
     </div>
   );
 }
+//Side effects are changes that are made with / to an outside system ,eg localstorage,api.maintaining state,keeping ui sync with data and rendering dom elements are NOT side effects.

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 
 //In functional programming ,state is immutable,only mutable when using respective setter function
 export default function Main() {
@@ -7,6 +7,15 @@ export default function Main() {
     topText: "One does not simply",
     bottomText: "walk into Old City",
   });
+  const [memeArr,setMemeArr]=useState([]);
+
+  //Note :the callback func in useEffect can't be made async
+  useEffect(()=>{
+    fetch('https://api.imgflip.com/get_memes')
+    .then(res=>res.json())
+    .then(data=>setMemeArr(data.data.memes));
+    
+  },[])
   function captureText(event) {
     const { value ,name } = event.currentTarget;
     // setMeme(prev=>prev.topText=value);
@@ -41,6 +50,7 @@ export default function Main() {
         </>
       </div>
       <div className="meme">
+        {/* <pre>{memeArr.data}</pre> */}
         <img src={meme.imgUrl} />
         <span className="top">{meme.topText}</span>
         <span className="bottom">{meme.bottomText}</span>
