@@ -36,6 +36,25 @@ export default function Main() {
   const [recipe, setRecipe] = React.useState("");
   const [cuisine, setCuisine] = React.useState("Indian");
 
+  //Refs are similiar to state ,the difference being that the former is mutable as well as doesn't cause a re-render upon being modified
+
+  //For DOM nodes,value is null.
+  const recipeSection=React.useRef(null);
+
+  React.useEffect(() => {
+  if (recipe!="" && recipeSection.current!=null) {
+    //doesn't work in iFrames-works for Edge browser
+    // recipeSection.current.scrollIntoView({ behavior: "smooth" });
+    
+    //works in iFrames
+    const yCoord=recipeSection.current.getBoundingClientRect().top;
+    window.scroll({
+      top:yCoord,
+      behavior:'smooth'
+    })
+  }
+}, [recipe]);
+
   // function handleSubmit(event) {
   //   event.preventDefault();
   //   const formData = new FormData(event.currentTarget);
@@ -57,6 +76,7 @@ export default function Main() {
   //states are mutable within the component and are used when temp/local variables used in the component are
   //to be saved or displayed
   // }
+
 
   React.useEffect(() => {
     const currentOption = placeholderOptions[optionIndex];
@@ -154,6 +174,7 @@ export default function Main() {
           ingredientsItems={ingredientsItems}
           length={currentIngredients.length}
           toggle={getRecipe}
+          ref={recipeSection}
         />
       ) : null}
       {isLoading && (
