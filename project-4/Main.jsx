@@ -15,7 +15,8 @@ export default function Main() {
     .then(res=>res.json())
     .then(data=>setMemeArr(data.data.memes));
     
-  },[])
+  },[]);
+
   function captureText(event) {
     const { value ,name } = event.currentTarget;
     // setMeme(prev=>prev.topText=value);
@@ -23,6 +24,18 @@ export default function Main() {
       ...prev,
       [name]: value,
     }));
+  }
+  function selectRandomImg()
+  {
+    // console.log(memeArr.length);
+    const cur=Math.floor(Math.random()*(memeArr.length+1));
+    console.log(cur);
+    // console.log(memeArr[0].url);
+    setMeme(prev=>({
+      ...prev,
+      imgUrl:memeArr[cur].url
+    }));
+
   }
   return (
     <main>
@@ -46,7 +59,7 @@ export default function Main() {
           />
         </label>
         <>
-          <button>Get a new meme image</button>
+          <button onClick={selectRandomImg}>Get a new meme image</button>
         </>
       </div>
       <div className="meme">
