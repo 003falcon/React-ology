@@ -1,4 +1,19 @@
+import Dice from './Dice'
 export default function App() {
-  return <main className="main-component">hhhh</main>;
+  return (<main >
+   <div className="dice-container">
+    <Dice value={1}/>
+    <Dice value={2}/>
+    <Dice value={3}/>
+    <Dice value={4}/>
+    <Dice value={5}/>
+    <Dice value={6}/>
+    <Dice value={1}/>
+    <Dice value={2}/>
+    <Dice value={3}/>
+    <Dice value={4}/>
+   
+  </div>
+  </main>);
   
 }
