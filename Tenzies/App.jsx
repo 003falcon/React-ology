@@ -1,6 +1,5 @@
 import Dice from "./Dice";
 import { useState } from "react";
-// import React from 'react'
 
 import Conf from "./Conf";
 
@@ -9,16 +8,23 @@ export default function App() {
   const num = 3;
   let display = "";
   let gameWon = false;
+  let gameOver = false;
   if (
     diceArr.every((die) => die.isHeld) &&
     diceArr.every((die) => die.value == diceArr[0].value)
   ) {
-    gameWon = true;
-    display = diceArr[0].value == num ? "Congratulations! You have won the game,Here's the codename to the next hint: EF5" : "Oops ,Try Again :(";
-    // console.log("Game Won!");
+    gameOver = true;
+    if(diceArr[0].value == num)
+    {
+      display =  "Congratulations! You have won the game,Here's the codename to the next hint: EF5" ;
+      gameWon=true;
+     }
+     else{
+      display = "Oops ,Try Again :(";
+      gameWon=false;
+    }
   }
-
-  const buttonText = gameWon ? "New Game" : "Roll";
+  const buttonText = gameOver ? "New Game" : "Roll";
   function resetDice() {
     setDiceArr(allNewDice());
   }
@@ -97,12 +103,11 @@ export default function App() {
       </div>
       <button
         className="roll-button"
-        onClick={gameWon ? resetDice : rollAllDice}
+        onClick={gameOver ? resetDice : rollAllDice}
       >
         {buttonText}
       </button>
-      {gameWon &&
-        alert(display)}
+      {gameOver && alert(display)}
     </main>
   );
 }
