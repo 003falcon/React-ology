@@ -84,10 +84,11 @@ export default function App() {
       {gameWon && <Conf />}
       <h1 className="title">Tenzies</h1>
       <p className="game-rules">
-        {" "}
-        Roll until all the dice are the same. Click each die to freeze it at its
-        current value between rolls.
-      </p>
+       Roll until all the dice are the same. Click each die to freeze it at its
+        current value between rolls.<br/>
+      <strong>Note:</strong> When one of the 6 numbers appears on each die,the hint appears.
+       
+</p>
       <div className="dice-container">
         {/* <Dice value={1}/>
     <Dice value={2}/>
