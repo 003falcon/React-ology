@@ -4,7 +4,7 @@ import { useState } from "react";
 import Conf from "./Conf";
 
 export default function App() {
-  const [diceArr, setDiceArr] = useState(allNewDice());
+  const [diceArr, setDiceArr] = useState(()=>allNewDice());
   const num = 3;
   let display = "";
   let gameWon = false;
