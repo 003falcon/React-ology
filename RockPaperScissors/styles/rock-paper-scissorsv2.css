@@ -1,0 +1,91 @@
+ body{
+  background-color: black;
+  color: white;
+}
+.heading{
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+ 
+}
+.icon{
+  height: 50px;
+
+}
+.game-result{
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 25px;
+}
+.button-style{
+  background-color: transparent;
+  border:2px solid white;
+  width:130px;
+  height:130px;
+  border-radius: 65px;
+  margin-right: 20px;
+  cursor:pointer;
+
+}
+.reset-icon,.auto-play-button{
+  padding: 8px 10px;
+  font-size:medium;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(253, 200, 8);
+  cursor: pointer;
+  
+}
+
+.moves-display{
+  margin-top: 10px;
+  margin-bottom:40px;
+}
+.score-display{
+  margin-bottom:30px;
+  margin-top:40px;
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+} 
+/* 📱 Mobile responsiveness */
+@media (max-width: 600px) {
+  .heading {
+    font-size: 22px;
+  }
+
+  .game-result {
+    font-size: 18px;
+  }
+
+  .button-style {
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+    margin: 8px;
+  }
+
+  .icon {
+    height: 35px;
+  }
+
+  .score-display {
+    font-size: medium;
+  }
+}
+
+@media (max-width: 400px) {
+  .heading {
+    font-size: 20px;
+  }
+
+  .button-style {
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+  }
+
+  .icon {
+    height: 30px;
+  }
+}
