@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color:  #3a2705 ;
+  background-color:  #050404 ;
   color: #cdb22b;
   height: 100vh;
   display: flex;
@@ -51,9 +51,27 @@ header > p {
   gap:5px;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
-span.elem{
+span.lang-elem{
   border-radius:5px;
   padding :5px 10px;
 
+}
+.game-word{
+    display: flex;
+    justify-content: center;
+    gap:5px;
+    
+}
+span.word-elem{
+  width:40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: rgb(11, 78, 22);
+  color:rgb(55, 252, 0);
+  border:1px rgb(49, 49, 49) solid;
+  border-bottom: rgb(2, 121, 62) 2px solid;
 }
