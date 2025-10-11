@@ -4,6 +4,11 @@ import {languages} from './languages.js'
 export default function App() {
 
   const [curWord, setCurWord] = useState("react");
+  const alphabet="abcdefghijklmnopqrstuvwxyz";
+
+  const langElements=languages.map((langObj)=>
+    <span key={langObj.name} className="lang-elem" style={{backgroundColor:langObj.backgroundColor,color:langObj.color}}>{langObj.name}</span>
+)
 
   //method 1 to convert string to array
   // const wordArr=[];
@@ -15,9 +20,8 @@ export default function App() {
   const wordArr=curWord.split("");
   const wordElements=wordArr.map((char,idx)=><span  key={idx} className="word-elem">{char.toUpperCase()}</span>);
 
-  const langElements=languages.map((langObj)=>
-    <span key={langObj.name} className="lang-elem" style={{backgroundColor:langObj.backgroundColor,color:langObj.color}}>{langObj.name}</span>
-)
+  const alphabetElem=alphabet.split("").map((char,idx)=><button  key={idx} className="alpha-elem">{char.toUpperCase()}</button>);
+
   return (
     <main>
       <header>
@@ -39,6 +43,15 @@ export default function App() {
       <section className="game-word">
         {wordElements}
       </section>
+      <section className="game-alphabet">
+        {alphabetElem}
+      </section>
+      <div className="new-game-div">
+
+      <button className="new-game">
+        New game
+      </button>
+      </div>
       
     </main>
   );

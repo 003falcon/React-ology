@@ -44,10 +44,10 @@ header > p {
   padding-left: 15px;
 }
 .game-lang{
-  padding-left: 60px;
+  padding: 60px;
   display:flex;
   flex-wrap: wrap;
-  max-width: 500px;
+  max-width: 600px;
   gap:5px;
   align-items: center;
   justify-content: center;
@@ -62,6 +62,7 @@ span.lang-elem{
     display: flex;
     justify-content: center;
     gap:5px;
+    margin-bottom: 40px;
     
 }
 span.word-elem{
@@ -74,4 +75,40 @@ span.word-elem{
   color:rgb(55, 252, 0);
   border:1px rgb(49, 49, 49) solid;
   border-bottom: rgb(2, 121, 62) 2px solid;
+}
+
+.game-alphabet{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:40px;
+  flex-wrap: wrap;
+  gap:5px;
+  max-width: 500px;
+  /* margin-left:120px;doubtful reg this design choice */
+
+}
+.game-alphabet > button{
+  height: 50px;
+  width: 40px;
+  gap:15px;
+  border:none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 30px;
+  background-color: rgb(7, 18, 79);
+  color:rgb(232, 239, 28)
+}
+.new-game-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.new-game{
+  border-radius: 3px;
+  background-color: yellow;
+  color:rgb(0, 0, 0);
+  padding:15px 60px;
+  cursor: pointer;
 }
