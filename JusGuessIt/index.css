@@ -99,6 +99,12 @@ span.word-elem{
   background-color: rgb(7, 18, 79);
   color:rgb(232, 239, 28)
 }
+.game-alphabet>button.right{
+  background-color: green;
+}
+.game-alphabet>button.wrong{
+  background-color: red;
+}
 .new-game-div{
   display: flex;
   justify-content: center;
